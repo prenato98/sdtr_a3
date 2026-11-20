@@ -36,11 +36,11 @@ mqttc.loop_start()
 #msg_info2 = mqttc.publish("teste", "my message2", qos=1)
 #unacked_publish.add(msg_info2.mid)
 
-#envio de 10 mensagens numeradas
-for i in range (10):
+#envio de 20 mensagens numeradas
+for i in range (20):
   tempo_pub = time.perf_counter_ns()
-  msg10 = mqttc.publish("teste", (str(i) + ";" + str(tempo_pub)), qos=1)
-  time.sleep (1)
+  msg10 = mqttc.publish("teste", (str(i) + ";" + str(tempo_pub)), qos=0)
+  time.sleep (0.01)
 msg10.wait_for_publish()  
 
 
