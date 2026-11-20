@@ -30,19 +30,27 @@ mqttc.connect("localhost")
 mqttc.loop_start()
 
 # Our application produce some messages
-msg_info = mqttc.publish("teste", "ola", qos=1)
+#msg_info = mqttc.publish("teste", "ola", qos=1)
 #unacked_publish.add(msg_info.mid)
 
-msg_info2 = mqttc.publish("teste", "my message2", qos=1)
+#msg_info2 = mqttc.publish("teste", "my message2", qos=1)
 #unacked_publish.add(msg_info2.mid)
+
+#envio de 10 mensagens numeradas
+for i in range (10):
+  tempo_pub = time.perf_counter_ns()
+  msg10 = mqttc.publish("teste", (str(i) + ";" + str(tempo_pub)), qos=1)
+  time.sleep (1)
+msg10.wait_for_publish()  
+
 
 # Wait for all message to be published
 #while len(unacked_publish):
 #   time.sleep(0.1)
 
 # Due to race-condition described above, the following way to wait for all publish is safer
-msg_info.wait_for_publish()
-msg_info2.wait_for_publish()
+#msg_info.wait_for_publish()
+#msg_info2.wait_for_publish()
 
 mqttc.disconnect()
 mqttc.loop_stop()
