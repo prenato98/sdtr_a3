@@ -22,8 +22,6 @@ def on_message(client, userdata, msg):
     relatorio_msg.append((seq, latencia_ns, hora_envio_ns))
     if (len(relatorio_msg) >= 1000):
         client.disconnect()
-    #print(msg.topic+" "+msg.payload.decode())
-    #print(seq, latencia_ms)
     
 mqttc = mqtt.Client(CallbackAPIVersion.VERSION2)
 mqttc.on_connect = on_connect
