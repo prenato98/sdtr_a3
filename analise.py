@@ -54,7 +54,7 @@ print("Quantidade de valores QoS 0:", len(valoresQoS_0), "de", n_mensagens)
 print("Quantidade de valores QoS 2:", len(valoresQoS_2), "de", n_mensagens)
 
 print(f"Latência mín / média QoS 0: {valoresQoS_0[0]:.3f} / {statistics.mean(valoresQoS_0):.3f} ms")
-print(f"Latência mín / média QoS2: {valoresQoS_2[0]:.3f} / {statistics.mean(valoresQoS_2):.3f} ms")
+print(f"Latência mín / média QoS 2: {valoresQoS_2[0]:.3f} / {statistics.mean(valoresQoS_2):.3f} ms")
 
 print(f"Latência p99 / máx  QoS 0: {p99_qos0:.3f} / {valoresQoS_0[-1]:.3f} ms")
 print(f"Latência p99 / máx  QoS 2: {p99_qos2:.3f} / {valoresQoS_2[-1]:.3f} ms")
