@@ -1,5 +1,6 @@
 import csv
 import statistics
+import matplotlib.pyplot as plt
 
 valoresQoS_0 = []
 valoresQoS_2 = []
@@ -68,3 +69,19 @@ print("Quantidade de intervalos QoS 2:", len(intervalos_qos2), "de", n_mensagens
 
 print(f"Períodos de Envio mín / média / max QoS 0: {min(intervalos_qos0):.3f} / {statistics.mean(intervalos_qos0):.3f} / {max(intervalos_qos0):.3f} ms")
 print(f"Períodos de Envio mín / média / max QoS 2: {min(intervalos_qos2):.3f} / {statistics.mean(intervalos_qos2):.3f} / {max(intervalos_qos2):.3f} ms")
+
+plt.hist(valoresQoS_0, bins=30, range=(0,3))
+plt.title("Histograma Latência QoS 0")
+plt.xlabel ("Latência (ms)")
+plt.ylabel ("Nº mensagens")
+plt.ylim(0, 750)
+plt.savefig("HistogramaLatenciaQoS_0.png")
+plt.close()
+
+plt.hist(valoresQoS_2, bins=30, range=(0,3))
+plt.title("Histograma Latência QoS 2")
+plt.xlabel ("Latência (ms)")
+plt.ylabel ("Nº mensagens")
+plt.ylim(0, 750)
+plt.savefig("HistogramaLatenciaQoS_2.png")
+plt.close()
